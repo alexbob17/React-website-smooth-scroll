@@ -1,15 +1,15 @@
 import React from 'react';
 import { FaBars } from 'react-icons/fa';
-import {Nav, NavbarContainer, NavLogo, MobileIcon, NavMenu, NavItem, NavLinks} from  './NavbarElements';
+import {Nav, NavbarContainer, NavLogo, MobileIcon, NavMenu, NavItem, NavLinks, NavBtn, NavBtnLink} from  './NavbarElements';
 
 
-const Navbar = () => {
+const Navbar = ({toggle}) => {
     return (
         <>
            <Nav>
                <NavbarContainer>
                 <NavLogo to= '/'>ALEJO BANK</NavLogo>
-                <MobileIcon>
+                <MobileIcon onClick={toggle}>
                     <FaBars />
                 </MobileIcon>
                 <NavMenu>
@@ -26,6 +26,9 @@ const Navbar = () => {
                         <NavLinks to="singup">Sing Up</NavLinks>
                     </NavItem>
                 </NavMenu>
+                 <NavBtn>
+                     <NavBtnLink to="/singin">Sing In</NavBtnLink>
+                 </NavBtn>
                </NavbarContainer>
            </Nav>
         </>

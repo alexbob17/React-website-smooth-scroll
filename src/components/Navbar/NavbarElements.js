@@ -62,7 +62,6 @@ export const NavMenu = styled.ul`
   text-align: center;
   margin-right: -22px;
 
-
   @media (max-width: 780px) {
     display: none;
   }
@@ -83,5 +82,34 @@ export const NavLinks = styled(LinkS)`
 
   &.active {
     border-bottom: 3px solid #01bf71;
+  }
+`;
+
+export const NavBtn = styled.nav`
+  display: flex;
+  align-items: center;
+
+  @media (max-width: 780px) {
+    display: none;
+  }
+`;
+
+export const NavBtnLink = styled(LinkR)`
+  border-radius: 50px;
+  background: #01bf71;
+  white-space: nowrap;
+  padding:10px 20px;
+  color: #010606;
+  font-size: 16px;
+  outline: none;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2 ease-in-out;
+  text-decoration: none;
+
+  &:hover{
+    transition: all 0.2s ease-in-out;
+    background: #fff;
+    color:#010606;
   }
 `;
