@@ -1,38 +1,94 @@
-import React from 'react';
-import { FaBars } from 'react-icons/fa';
-import {Nav, NavbarContainer, NavLogo, MobileIcon, NavMenu, NavItem, NavLinks, NavBtn, NavBtnLink} from  './NavbarElements';
+import React, { useState, useEffect } from "react";
+import { FaBars } from "react-icons/fa";
+import {animateScroll as scroll} from 'react-scroll';
+import {
+  Nav,
+  NavbarContainer,
+  NavLogo,
+  MobileIcon,
+  NavMenu,
+  NavItem,
+  NavLinks,
+  NavBtn,
+  NavBtnLink,
+} from "./NavbarElements";
+
+const Navbar = ({ toggle }) => {
+  const [scrollNav, setScrollNav] = useState(false);
+  const changeNav = () => {
+    if(window.scrollY >=80){
+        setScrollNav(true);
+    }else{
+        setScrollNav(false)
+    }
+};
 
 
-const Navbar = ({toggle}) => {
-    return (
-        <>
-           <Nav>
-               <NavbarContainer>
-                <NavLogo to= '/'>ALEJO BANK</NavLogo>
-                <MobileIcon onClick={toggle}>
-                    <FaBars />
-                </MobileIcon>
-                <NavMenu>
-                    <NavItem>
-                        <NavLinks to="about">About</NavLinks>
-                    </NavItem>
-                    <NavItem>
-                        <NavLinks to="discover">Discover</NavLinks>
-                    </NavItem>
-                    <NavItem>
-                        <NavLinks to="services">Services</NavLinks>
-                    </NavItem>
-                    <NavItem>
-                        <NavLinks to="singup">Sing Up</NavLinks>
-                    </NavItem>
-                </NavMenu>
-                 <NavBtn>
-                     <NavBtnLink to="/singin">Sing In</NavBtnLink>
-                 </NavBtn>
-               </NavbarContainer>
-           </Nav>
-        </>
-    )
+const toggleHome = () => {
+    scroll.scrollToTop();
 }
+
+
+
+useEffect( ()=>{
+    window.addEventListener('scroll', changeNav)
+}, [])
+
+
+  return (
+    <>
+      <Nav scrollNav = {scrollNav}>
+        <NavbarContainer>
+          <NavLogo to="/" onClick={toggleHome}>ALEJO BANK</NavLogo>
+          <MobileIcon onClick={toggle}>
+            <FaBars />
+          </MobileIcon>
+          <NavMenu>
+            <NavItem>
+              <NavLinks 
+              to="about"
+              smooth={true}
+              duration={500}
+              spy={true}
+              exact='true'
+              offset={-80}
+              >About</NavLinks>
+            </NavItem>
+            <NavItem>
+              <NavLinks 
+              to="discover"
+              smooth={true}
+              duration={500}
+              spy={true}
+              exact='true'
+              offset={-80}>Discover</NavLinks>
+            </NavItem>
+            <NavItem>
+              <NavLinks 
+              to="services"
+              smooth={true}
+              duration={500}
+              spy={true}
+              exact='true'
+              offset={-80}>Services</NavLinks>
+            </NavItem>
+            <NavItem>
+              <NavLinks 
+              to="singup"
+              smooth={true}
+              duration={500}
+              spy={true}
+              exact='true'
+              offset={-80}>Sing Up</NavLinks>
+            </NavItem>
+          </NavMenu>
+          <NavBtn>
+            <NavBtnLink to="/singin">Sing In</NavBtnLink>
+          </NavBtn>
+        </NavbarContainer>
+      </Nav>
+    </>
+  );
+};
 
 export default Navbar;

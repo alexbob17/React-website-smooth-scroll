@@ -1,32 +1,31 @@
-import React,{useState} from 'react';
-import Navbar from '../Navbar/index';
-import Sidebar from '../Sidebar/index';
-import HeroSection from '../HeroSection/index';
-import InfoSection from '../InfoSection';
-import {homeObjOne,homeObjTwo,homeObjThree} from '../InfoSection/Data';
-import Services from '../Services';
-
+import React, { useState } from "react";
+import Navbar from "../Navbar/index";
+import Sidebar from "../Sidebar/index";
+import HeroSection from "../HeroSection/index";
+import InfoSection from "../InfoSection";
+import { homeObjOne, homeObjTwo, homeObjThree } from "../InfoSection/Data";
+import Services from "../Services";
+import Footer from "../Footer/index";
 
 const Home = () => {
- const [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
 
- const toggle = () =>{
-     setIsOpen(!isOpen);
- }
+  const toggle = () => {
+    setIsOpen(!isOpen);
+  };
 
- 
- return (
-        <>
-          <Sidebar isOpen={isOpen} toggle={toggle}></Sidebar>
-          <Navbar toggle={toggle}></Navbar>  
-          <HeroSection></HeroSection>
-          <InfoSection {...homeObjOne} />
-          <InfoSection {...homeObjTwo} />
-          <Services/>
-          <InfoSection {...homeObjThree} />
+  return (
+    <>
+      <Sidebar isOpen={isOpen} toggle={toggle}></Sidebar>
+      <Navbar toggle={toggle}></Navbar>
+      <HeroSection></HeroSection>
+      <InfoSection {...homeObjOne} />
+      <InfoSection {...homeObjTwo} />
+      <Services />
+      <InfoSection {...homeObjThree} />
+      <Footer></Footer>
+    </>
+  );
+};
 
-        </>
-    )
-}
-
-export default Home
+export default Home;
